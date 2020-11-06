@@ -4,14 +4,16 @@
 # Writing middlewares
 link --> https://simpleisbetterthancomplex.com/tutorial/2016/07/18/how-to-create-a-custom-django-middleware.html
 
-1. authentication from token in request headers
+# 1. authentication from token in request headers
 
 from django.utils.deprecation import MiddlewareMixin
+
 from django.conf import settings
 
 import requests
 
 class MultipleProxyMiddleware(MiddlewareMixin):
+
     FORWARDED_FOR_FIELDS = [
         'HTTP_X_FORWARDED_FOR',
         'HTTP_X_FORWARDED_HOST',
