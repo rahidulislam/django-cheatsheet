@@ -2,7 +2,7 @@
 
 
 # Writing middlewares
-[link](https://simpleisbetterthancomplex.com/tutorial/2016/07/18/how-to-create-a-custom-django-middleware.html)
+[website link but outdated now](https://simpleisbetterthancomplex.com/tutorial/2016/07/18/how-to-create-a-custom-django-middleware.html)
 
 # 1. authentication from token in request headers
 
