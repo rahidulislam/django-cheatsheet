@@ -12,8 +12,9 @@ from django.conf import settings
 
 import requests
 
-class MultipleProxyMiddleware(MiddlewareMixin):
 
+
+class MultipleProxyMiddleware(MiddlewareMixin):
     FORWARDED_FOR_FIELDS = [
         'HTTP_X_FORWARDED_FOR',
         'HTTP_X_FORWARDED_HOST',
@@ -48,8 +49,10 @@ class MultipleProxyMiddleware(MiddlewareMixin):
         
 # 2. replacing the media url while processing request...
 
-class StackOverflowMiddleware(MiddlewareMixin):
 
+
+
+class StackOverflowMiddleware(MiddlewareMixin):
     def process_request(self, request):
         if request.is_secure():
             ssl_media_url = settings.MEDIA_URL.replace('http://','https://')
