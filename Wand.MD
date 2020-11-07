@@ -2,6 +2,7 @@ link --> https://stackoverflow.com/questions/3111779/how-can-i-get-the-file-name
 link -> https://www.youtube.com/watch?v=pf7OONW7l54&list=LL&index=3&t=81s
 link-> https://stackoverflow.com/questions/57208396/imagemagick-ghostscript-delegate-security-policy-blocking-conversion?rq=1
 link -> https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
+link -> https://itsfoss.com/could-not-get-lock-error/
 # Wand -> how to create image images from pdf's and save it to database
   
   
