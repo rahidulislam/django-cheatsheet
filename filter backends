@@ -1,0 +1,68 @@
+
+# https://stackoverflow.com/questions/47768882/how-can-i-use-limit-offset-pagination-for-viewsets
+
+    def list(self,request):
+        country_data = Country.objects.all()
+
+        page = self.paginate_queryset(country_data)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(country_data, many=True)
+        return Response(serializer.data)
+        
+# http://ccbv.co.uk/?fbclid=IwAR3SqBbdq7GGYlYZoXuZ2Ct8WMtZZX1-VEfjhsqxhnqANW_jSyA6qwFvDqY   
+# https://github.com/izimobil/django-rest-framework-datatables
+        
+      from django.shortcuts import render
+      from rest_framework import viewsets
+      from rest_framework.response import Response
+      from rest_framework import status
+      from rest_framework.filters import SearchFilter
+      from django_filters.rest_framework import DjangoFilterBackend
+      from core import serializers 
+      from core.models import TableOne
+      import random
+
+      class Random:
+          def init(self, objects):
+              self.model = objects
+              self._meta = None
+
+      class TableoneViewSet(viewsets.ModelViewSet):
+          queryset = TableOne.objects.all()
+          serializer_class = serializers.TableOneSerializer
+          filter_backends = (DjangoFilterBackend, SearchFilter)
+          filter_fields = ('id', 'title')
+          search_fields = ('title', 'body')
+
+
+          def list(self, request, *args, **kwargs):     
+
+              order =self.request.query_params.get("order")
+              form =self.request.query_params.get("format")
+              limit = self.request.query_params.get("limit")
+              if limit:
+                  limit = int(limit)
+
+              if limit and form and order:
+                  numbers = []
+                  random_objects = []
+                  objects = TableOne.objects.all()
+                  length = len(objects)
+                  for i in range(limit):
+                      numbers.append(random.randint(0,length-1))
+
+                  for i in numbers:
+
+                      random_objects.append(objects[i])
+
+
+                  serializer = serializers.TableOneSerializer(random_objects, many=True)
+                  return Response(serializer.data, status=status.HTTP_200_OK)    
+
+              else:
+                  queryset = self.filter_queryset(self.get_queryset())
+                  serializer = serializers.TableOneSerializer(queryset, many=True)
+                  return Response(serializer.data, status=status.HTTP_200_OK)
