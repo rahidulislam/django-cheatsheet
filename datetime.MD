@@ -1,6 +1,6 @@
 # Python datetime
 
-### Get Days between two dates
+### Get DAYS between two dates
 
 [source link](https://www.w3resource.com/python-exercises/python-basic-exercise-14.php)
     
@@ -15,6 +15,6 @@
     x = now.date()-application_time.date()
     print(x.days)
 
-### Get list of days between two days
+### Get list of DATES between two days
 
 [source link](https://stackoverflow.com/questions/7274267/print-all-day-dates-between-two-dates/7274316)
